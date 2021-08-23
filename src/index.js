@@ -37,6 +37,9 @@ const MORSE_TABLE = {
     '-----':  '0',
 };
 
+// Create an object: Each letter from alphabet encoded with dots(.) and dashes(-). 10 stands for dot(.), 11 stands for dash(-). Space in string is **********.
+const ENCODED = {' ':"**********", '.':"10", '-':"11"};
+
 function decode(expr) {
     // write your solution here
 }
