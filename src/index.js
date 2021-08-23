@@ -37,11 +37,62 @@ const MORSE_TABLE = {
     '-----':  '0',
 };
 
-// Create an object: Each letter from alphabet encoded with dots(.) and dashes(-). 10 stands for dot(.), 11 stands for dash(-). Space in string is **********.
-const ENCODED = {' ':"**********", '.':"10", '-':"11"};
+
+
+//example let expr ='00101010100000000010001011101000101110100000111111**********00001011110000111111000010111000101110100000111010'; 
+
+
+const BINTable = {  
+'00' : '',
+'10' : '.',
+'11' : '-',
+'**********' : ' ',
+}
+
+
+
+
+function getBinarySymbol(word)
+{
+  
+ 
+  if(word == "**********")
+    return BINTable[word];
+  
+  let result = '';
+ let binary = word.match(/.{1,2}/g);
+  
+ binary.forEach(el => {result += BINTable[el];  }  );
+
+  return MORSE_TABLE[result];   
+}
+
+function getMorseSymbol(word)
+{
+  let result = '';
+ let binary = word.match(/.{1,2}/g);
+  //console.log(binary); 
+ binary.forEach(el => {result += BINTable[el] }  );
+  //console.log('result: ' + result); 
+  return result;   
+}
+
+
+
+
+
+
 
 function decode(expr) {
     // write your solution here
+	
+	
+		let tenSlice = expr.match(/.{1,10}/g);
+
+		let resultMorse = '';
+		tenSlice.forEach(word => {resultMorse +=  getBinarySymbol(word)  } );
+
+		return resultMorse;
 }
 
 module.exports = {
